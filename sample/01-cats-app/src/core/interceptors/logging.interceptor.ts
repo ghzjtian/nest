@@ -13,6 +13,7 @@ export class LoggingInterceptor implements NestInterceptor {
     console.log('Before...');
 
     const now = Date.now();
+    // 如果中途抛出了异常，将不会走到 After...
     return next
       .handle()
       .pipe(tap(() => console.log(`After... ${Date.now() - now}ms`)));

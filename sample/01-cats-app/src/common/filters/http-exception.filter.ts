@@ -8,6 +8,7 @@ import {
 @Catch(HttpException)
 export class HttpExceptionFilter implements ExceptionFilter<HttpException> {
   catch(exception: HttpException, host: ArgumentsHost) {
+    console.log("HttpExceptionFilter");
     const ctx = host.switchToHttp();
     const response = ctx.getResponse();
     const request = ctx.getRequest();
