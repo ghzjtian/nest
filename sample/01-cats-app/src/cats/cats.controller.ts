@@ -13,7 +13,7 @@ export class CatsController {
   constructor(private readonly catsService: CatsService) {}
 
   @Post()
-  @Roles('admin')
+  // @Roles('admin')
   async create(@Body() createCatDto: CreateCatDto) {
     this.catsService.create(createCatDto);
   }
@@ -22,12 +22,10 @@ export class CatsController {
   // @UseFilters(new HttpExceptionFilter())   // 用 HttpExceptionFilter 去返回自定义的错误信息.
   async findAll(): Promise<Cat[]> {
     console.log("findAll");
-    
-    // return this.catsService.findAll();
-    // throw new HttpException(new Error('Cause Error'), HttpStatus.FORBIDDEN);
-    throw new HttpException('custom message 222', HttpStatus.BAD_REQUEST, {
-      cause: new Error('Cause Error'),
-     })
+    return this.catsService.findAll();
+    // throw new HttpException('custom message 222', HttpStatus.BAD_REQUEST, {
+    //   cause: new Error('Cause Error'),
+    //  });
   }
 
   /**

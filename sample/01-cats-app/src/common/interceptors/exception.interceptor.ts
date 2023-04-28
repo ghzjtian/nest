@@ -15,6 +15,7 @@ export class ErrorsInterceptor implements NestInterceptor {
     return next
       .handle()
       .pipe(
+        // 修改返回的错误信息
         catchError(err =>
           throwError(
             () => new HttpException('New message', HttpStatus.BAD_GATEWAY),
