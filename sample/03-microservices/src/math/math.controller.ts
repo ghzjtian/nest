@@ -9,13 +9,15 @@ export class MathController {
 
   @Get()
   execute(): Observable<number> {
+    console.log("execute");
     const pattern = { cmd: 'sum' };
     const data = [1, 2, 3, 4, 5];
     return this.client.send<number>(pattern, data);
   }
-
+  
   @MessagePattern({ cmd: 'sum' })
   sum(data: number[]): number {
+    console.log("sum");
     return (data || []).reduce((a, b) => a + b);
   }
 }
