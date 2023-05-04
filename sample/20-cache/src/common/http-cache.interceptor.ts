@@ -11,6 +11,7 @@ export class HttpCacheInterceptor extends CacheInterceptor {
     const excludePaths = [
       // Routes to be excluded
     ];
+    // 如果不是 get 请求 或者被排除的 url .
     if (
       !isGetRequest ||
       (isGetRequest &&
