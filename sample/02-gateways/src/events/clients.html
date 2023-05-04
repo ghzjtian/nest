@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!-- Websocket 客户端代码. -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- <script src="test.js"></script> -->
+  <script>
+    // const socket = io("https://server-domain.com");
+    const socket = io("ws://localhost:3000");
+    // client-side
+    socket.on("connect", () => {
+      console.log("connect:" + socket.id); // x8WIv7-mJelg7on_ALbx
+    });
+    socket.on("events", (data) => {
+      console.log("events:" + socket.id + ` data:${data}`); // x8WIv7-mJelg7on_ALbx
+    });
+
+    socket.on("disconnect", () => {
+      console.log("disconnect:" + socket.id); // undefined
+    });
+
+    socket.emit("events", "test");
+  </script>
+</body>
+</html>
