@@ -21,7 +21,7 @@ export class OrdersService {
 
   constructor(private eventEmitter: EventEmitter2) {}
 
-  create(createOrderDto: CreateOrderDto) {
+  async create(createOrderDto: CreateOrderDto) {
     const order = {
       id: this.orders.length + 1,
       ...createOrderDto,

@@ -5,8 +5,13 @@ import { OrderCreatedEvent } from '../events/order-created.event';
 @Injectable()
 export class OrderCreatedListener {
   @OnEvent('order.created')
-  handleOrderCreatedEvent(event: OrderCreatedEvent) {
+  async handleOrderCreatedEvent(event: OrderCreatedEvent) {
     // handle and process "OrderCreatedEvent" event
+    await this.sleep(10 * 1000);
     console.log(event);
+  }
+
+  sleep(ms: number) {
+    return new Promise(resolve =>  setTimeout(resolve, ms));
   }
 }
