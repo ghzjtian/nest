@@ -7,9 +7,14 @@ export class AudioProcessor {
   private readonly logger = new Logger(AudioProcessor.name);
 
   @Process('transcode')
-  handleTranscode(job: Job) {
+  async handleTranscode(job: Job) {
     this.logger.debug('Start transcoding...');
     this.logger.debug(job.data);
+    await this.sleep(10 * 1000);
     this.logger.debug('Transcoding completed');
+  }
+
+  sleep(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 }
